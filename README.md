@@ -45,9 +45,10 @@ The application runs **locally**, supports **role-based access**, and provides a
 
 - **Backend:** Python, Flask
 - **Database:** SQLite
-- **Frontend:** HTML, CSS (Jinja2 Templates)
-- **Reports:** Pandas, OpenPyXL
+- **Frontend:** HTML, CSS (Jinja2 Templates),
+- **Reports:** Pandas, OpenPyXL,numpy
 - **Version Control:** Git & GitHub
+
 
 ---
 
