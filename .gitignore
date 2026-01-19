@@ -10,6 +10,8 @@ __pycache__/
 .Python
 build/
 develop-eggs/
+attendance.db/
+dataset/
 dist/
 downloads/
 eggs/

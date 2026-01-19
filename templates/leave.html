@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leave Management</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-4">
+
+    <h3 class="mb-4">Apply Leave</h3>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+
+            <form method="POST" action="/apply_leave">
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">From</label>
+                        <input type="date" name="from" class="form-control" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">To</label>
+                        <input type="date" name="to" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Leave Type</label>
+                    <select name="type" class="form-select">
+                        <option value="Casual">Casual</option>
+                        <option value="Sick">Sick</option>
+                        <option value="Paid">Paid</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Apply Leave
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+    <h4 class="mb-3">Your Leave Requests</h4>
+
+    <div class="card shadow">
+        <div class="card-body">
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for l in leaves %}
+                        <tr>
+                            <td>{{ l[0] }}</td>
+                            <td>{{ l[1] }}</td>
+                            <td>{{ l[2] }}</td>
+                            <td>
+                                <span class="badge 
+                                    {% if l[3] == 'Approved' %}bg-success
+                                    {% elif l[3] == 'Rejected' %}bg-danger
+                                    {% else %}bg-warning text-dark{% endif %}">
+                                    {{ l[3] }}
+                                </span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <a href="/dashboard" class="btn btn-secondary mt-4">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
